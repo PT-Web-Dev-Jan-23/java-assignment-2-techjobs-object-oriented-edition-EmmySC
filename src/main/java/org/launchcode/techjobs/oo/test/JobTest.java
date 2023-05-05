@@ -19,9 +19,10 @@ public class JobTest {
         Job job1 = new Job();
         Job job2 = new Job();
         String spec = "verify distinct IDs of the two objects";
-        String expected = "job1.getId";
-        String actual = "job2.getId";
-        Assert.assertNotEquals(spec, expected, actual);
+//        String expected = "job1.getId";
+//        String actual = "job2.getId";
+        Assert.assertNotEquals(spec, job1.getId(), job2.getId());
+        //Assert.assertNotEquals(spec, expected, actual);
     }
 
     @Test
@@ -29,7 +30,8 @@ public class JobTest {
         Job job1 = new Job("Product tester", new Employer("ACME"),
                 new Location("Desert"), new PositionType("Quality " +
                 "control"), new CoreCompetency("Persistence"));
-        Assert.assertTrue("verify Job class", job1 instanceof Job);
+        Assert.assertTrue("verify Job class", job1.getName() instanceof String);
+        //changed from job1 instanceof Job
         Assert.assertEquals("verify job value", job1.getName(),
                 "Product tester");
         Assert.assertTrue("verify employer is Employer class",
