@@ -17,6 +17,11 @@ public class Main {
 //        for (Job job : jobs){
 //            System.out.println(job);
 //        }
+
+//         String ?variableName? = new String("Welcome to the world of geeks.");
+//         System.out.print("Output String Value : ");
+//         System.out.println(?variableName?.toString());
+         //Output String Value : Welcome to the world of geeks.//
     }
 
 }

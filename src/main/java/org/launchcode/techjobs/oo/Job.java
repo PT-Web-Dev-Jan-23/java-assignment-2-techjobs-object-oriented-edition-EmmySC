@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Job {
 
-    private int id;
+    private int id; //private static int id = 0;
     private static int nextId = 1;
 
     private String name;
@@ -91,9 +91,104 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
+//    public static int getId() {
+//        return id;
+//    }
+
     public int getId() {
         return id;
     }
+
+//    public static boolean getId() {
+//        return id;
+//    }
+
+    /*
+    How toString method needs to behave:
+    - When passed a Job object, it should return a string that contains a blank line
+        before & after the job information
+    - The string should contain a label for each field, followed by the data stored in that field.
+        Each field should be on its own line.
+    - If a field is empty, the method should add, “Data not available” after the label
+    - (Bonus) If a Job object ONLY contains data for the id field, the method should return,
+        “OOPS! This job does not seem to exist.”
+    ID:  _______
+    Name: _______
+    Employer: _______
+    Location: _______
+    Position Type: _______
+    Core Competency: _______
+ */
+/*
+the test only checks if the returned string starts and ends with a blank line, make that happen
+ */
+
+//    public String toString() {
+//        String Job = "\n";
+//        return String.valueOf('\n'+ Job +'\n');
+//
+//    }
+
+/*
+the test checks if the string contains a label for each field, followed by the data stored in that
+field, and that each field is on its own line
+*/
+
+/*
+the test checks if a field is empty, the method should add, "Data not available" after the label
+ */
+
+/*
+BONUS: the test checks if a Job object ONLY contains data for the id field, the method should return,
+"OOPS! This job does not seem to exist."
+ */
+    @Override
+    public String toString() {
+//        if (int id == int i = 0) { //default values: int = 0, string = null //BONUS
+//            return "OOPS! This job does not seem to exist.";        //BONUS
+//        }
+
+        String DNA = "Data not available";
+        if (name == null || name == "") {
+            name = DNA;
+        }
+        if (employer == null || employer.getValue() == "") {  //equals()
+            employer.setValue(DNA);
+        }
+        if (location == null || location.getValue() =="") {
+            location.setValue(DNA);
+        }
+        if (positionType == null || positionType.getValue() =="") {
+            positionType.setValue(DNA);
+        }
+        if(coreCompetency == null || coreCompetency.getValue() == "") {
+            coreCompetency.setValue(DNA);
+        }
+        return "\n" + "ID: " + id + "\n" +
+                "Name: " + name + "\n" +
+                "Employer: " + employer + "\n" +
+                "Location: " + location + "\n" +
+                "Position Type: " + positionType + "\n" +
+                "Core Competency: " + coreCompetency + "\n";
+    }
+
+
+//BONUS:
+//    public String toString() {
+//        if (!(this instanceof Job)) {
+//            return "OOPS! This job does not seem to exist.";
+//        }
+//
+//        return '\n' + "ID: "+ id + "\n" +
+//                "Name: " + name + "\n" +
+//                "Employer: " + employer.getValue() +"\n" +
+//                "Location: " + location.getValue() +"\n" +
+//                "Position Type: " + positionType.getValue() +"\n" +
+//                "Core Competency: " + coreCompetency.getValue()+'\n';
+//
+//    }
+
+
 
 
 }
