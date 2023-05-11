@@ -14,7 +14,6 @@ Which custom methods are identical in ALL of the classes? --> toString, equals, 
 
 public abstract class JobField {
 
-
 //Fields
     private final int id;   //private int
     private static int nextId = 1;
