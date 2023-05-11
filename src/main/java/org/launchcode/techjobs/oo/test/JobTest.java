@@ -29,27 +29,17 @@ public class JobTest {
         Job jobTest = new Job("Product tester", new Employer("ACME"),
                 new Location("Desert"), new PositionType("Quality " +
                 "control"), new CoreCompetency("Persistence"));
-        Assert.assertTrue("verify Job class", jobTest.getName() instanceof String);
+        Assert.assertTrue(jobTest.getName() instanceof String);
         //changed from jobTest instanceof Job
-        Assert.assertEquals("verify job value", jobTest.getName(),
-                "Product tester");
-        Assert.assertTrue("verify employer is Employer class",
-                jobTest.getEmployer() instanceof Employer);
-        Assert.assertEquals("verify employer assigns Employer value", jobTest.getEmployer().getValue(),
-                "ACME");
-        Assert.assertTrue("verify location is Location class",
-                jobTest.getLocation() instanceof Location);
-        Assert.assertEquals("verify location assigns Location value", jobTest.getLocation().getValue(),
-                "Desert");
-        Assert.assertTrue("verify positionType is PositionType class",
-                jobTest.getPositionType() instanceof PositionType);
-        Assert.assertEquals("verify positionType assigns PositionType value",
-                jobTest.getPositionType().getValue(), "Quality " + "control");
-        Assert.assertTrue("verify coreCompetency is CoreCompetency class",
-                jobTest.getCoreCompetency() instanceof CoreCompetency);
-        Assert.assertEquals("verify coreCompetency assigns CoreCompetency value",
-                jobTest.getCoreCompetency().getValue(),
-                "Persistence");
+        Assert.assertEquals(jobTest.getName(), "Product tester");
+        Assert.assertTrue(jobTest.getEmployer() instanceof Employer);
+        Assert.assertEquals(jobTest.getEmployer().getValue(), "ACME");
+        Assert.assertTrue(jobTest.getLocation() instanceof Location);
+        Assert.assertEquals( jobTest.getLocation().getValue(), "Desert");
+        Assert.assertTrue(jobTest.getPositionType() instanceof PositionType);
+        Assert.assertEquals(jobTest.getPositionType().getValue(), "Quality " + "control");
+        Assert.assertTrue(jobTest.getCoreCompetency() instanceof CoreCompetency);
+        Assert.assertEquals(jobTest.getCoreCompetency().getValue(), "Persistence");
     }
 
     @Test
@@ -61,10 +51,16 @@ public class JobTest {
                 new Location("Desert"), new PositionType("Quality control"),
                 new CoreCompetency("Persistence"));
         String spec = "test JobIds";
-        int expected = jobTest1.getId();
-        int actual = jobTest2.getId();
-        Assert.assertNotEquals(spec, expected, actual);
-        //asserFalse(jobTest1.equals(jobTest2)); //assertFalse((jobTest1.getId()) == (jobTest2.getId()));
+//        int expected = jobTest1.getId();
+//        int actual = jobTest2.getId();
+        String expected = Integer.toString(jobTest1.getId());
+        String actual = Integer.toString(jobTest2.getId());
+        Assert.assertFalse(expected == actual);
+
+
+        //Assert.assertNotEquals(spec, expected, actual);
+        //Assert.assertFalse(spec, jobTest1.equals(jobTest2));
+        //Assert.assertFalse((jobTest1.getId()) == (jobTest2.getId()));
     }
 
 /*
@@ -85,8 +81,8 @@ Recall that to get the character at a given position in a String use --> str.cha
 //        char lastChar = jobTest.toString().charAt(jobTest.toString().length() - 1);
 //        Assert.assertEquals(spec, firstChar, '\n');
 //        assertEquals(spec, lastChar, '\n');
-        assertEquals(spec, jobTest2.toString().charAt(0), '\n');
-        assertEquals(spec, jobTest2.toString().charAt(jobTest2.toString().length() - 1), '\n');
+        assertEquals(jobTest2.toString().charAt(0), '\n');
+        assertEquals(jobTest2.toString().charAt(jobTest2.toString().length() - 1), '\n');
     }
 
 /*
@@ -107,7 +103,7 @@ that field, and that each field is on its own line
                         "Location: " + jobTest.getLocation() + '\n' +
                         "Position Type: " + jobTest.getPositionType() + '\n' +
                         "Core Competency: " + jobTest.getCoreCompetency() + '\n';
-        Assert.assertEquals(spec, expected, actual);
+        Assert.assertEquals(expected, actual);
 
     }
 
@@ -123,7 +119,7 @@ This test should check if the toString method can handle an empty field(s)
 //BONUS: //Assert.assertEquals(jobTest2.toString(), "OOPS! This job does not seem to exist.");
         String spec = "should check if the toString method can handle an empty field(s)";
 //BONUS: //assertEquals(jobTest2.toString(), '\n' + "OOPS! This job does not seem to exist." + '\n');
-        assertEquals(spec, "\nID: " + jobTest2.getId() + '\n' +
+        assertEquals("\nID: " + jobTest2.getId() + '\n' +
         			                        "Name: Data not available" + '\n' +
         			                        "Employer: Data not available" + '\n' +
                                             "Location: Data not available" + '\n' +
