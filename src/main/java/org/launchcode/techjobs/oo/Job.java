@@ -159,25 +159,25 @@ BONUS: the test checks if a Job object ONLY contains data for the id field, the 
                 response += "Name: " + this.getName() + "\n";
             }
 
-            if (employer.getValue() == null) {  //equals()  // || employer.getValue() == ""
+            if (employer.getValue() == null || employer.getValue() == "") {  //equals()  // || employer.getValue() == ""
                 response += "Employer: Data not available\n";
             } else {
                 response += "Employer: " + employer.getValue() + "\n";
             }
 
-            if (location.getValue() == null) {
+            if (location.getValue() == null || location.getValue() == "") {
                 response += "Location: Data not available\n";
             } else {
                 response += "Location: " + location.getValue() + "\n";
             }
 
-            if (positionType.getValue() == null) {
+            if (positionType.getValue() == null || positionType.getValue() == "") {
                 response += "Position Type: Data not available\n";
             } else {
                 response += "Position Type: " + positionType.getValue() + "\n";
             }
 
-            if (coreCompetency.getValue() == null) {
+            if (coreCompetency.getValue() == null || coreCompetency.getValue() == "") {
                 response += "Core Competency: Data not available\n";
             } else {
                 response += "Core Competency: " + coreCompetency.getValue() + "\n";
