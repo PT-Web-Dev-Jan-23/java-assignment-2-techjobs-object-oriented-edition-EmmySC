@@ -64,7 +64,7 @@ public class JobTest {
         int expected = jobTest1.getId();
         int actual = jobTest2.getId();
         Assert.assertNotEquals(spec, expected, actual);
-        //asserFalse(jobTest1.equals(jobTest2));
+        //asserFalse(jobTest1.equals(jobTest2)); //assertFalse((jobTest1.getId()) == (jobTest2.getId()));
     }
 
 /*
@@ -73,61 +73,72 @@ Recall that to get the character at a given position in a String use --> str.cha
  */
     @Test
     public void testToStringStartsAndEndsWithNewLine() {
-        Job jobTest = new Job(); //name, employer, location, positionType, coreCompetency
+        //Job jobTest = new Job(); //name, employer, location, positionType, coreCompetency
+        Job jobTest2 = new Job("Product tester", new Employer("ACME"),
+                new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         String spec = "should check that the first and last characters of the String are both newline";
 //        char expected = '\n';
 //        char actual = '\n';
 //        Assert.assertEquals(spec, expected, actual);
 
-        char firstChar = jobTest.toString().charAt(0);
-        char lastChar = jobTest.toString().charAt(jobTest.toString().length()-1);
-        Assert.assertEquals(spec, firstChar, '\n');
-        assertEquals(spec, lastChar, '\n');
+//        char firstChar = jobTest.toString().charAt(0);
+//        char lastChar = jobTest.toString().charAt(jobTest.toString().length() - 1);
+//        Assert.assertEquals(spec, firstChar, '\n');
+//        assertEquals(spec, lastChar, '\n');
+        assertEquals(spec, jobTest2.toString().charAt(0), '\n');
+        assertEquals(spec, jobTest2.toString().charAt(jobTest2.toString().length() - 1), '\n');
     }
 
 /*
 This test should check if the string contains a label for each field, followed by the data stored in
 that field, and that each field is on its own line
  */
-    @Test
+    @Test   //****//
     public void testToStringContainsCorrectLabelsAndData() {
-        Job jobTest = new Job(); //name, employer, location, positionType, coreCompetency
-        //("Name", new Employer(), new Location(), new PositionType(), new CoreCompetency())
+        Job jobTest = new Job("Product tester", new Employer("ACME"),
+                new Location("Desert"), new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
         String spec = "should check if the string contains a label for each field, followed by the " +
                 "data stored in that field, and that each field is on its own line";
         String expected = jobTest.toString();
-//                '\n' + "ID: " + jobTest.getId() + '\n' +
-//                "Name: " + jobTest.getName() + '\n' +
-//                "Employer: " + jobTest.getEmployer() + '\n' +
-//                "Location: " + jobTest.getLocation() + '\n' +
-//                "Position Type: " + jobTest.getPositionType() + '\n' +
-//                "Core Competency: " + jobTest.getCoreCompetency() + '\n';
-        String actual = jobTest.getName();
+        String actual = '\n' + "ID: " + jobTest.getId() + '\n' +
+                        "Name: " + jobTest.getName() + '\n' +
+                        "Employer: " + jobTest.getEmployer() + '\n' +
+                        "Location: " + jobTest.getLocation() + '\n' +
+                        "Position Type: " + jobTest.getPositionType() + '\n' +
+                        "Core Competency: " + jobTest.getCoreCompetency() + '\n';
         Assert.assertEquals(spec, expected, actual);
+
+    }
+
 /*
-        String.format("\nID: %d\n" +
-                        "Name: %s\n" +
-                        "Employer: %s\n" +
-                        "Location: %s\n" +
-                        "Position Type: %s\n" +
-                        "Core Competency: %s\n", getJobId(job), getJobFieldString(job, "name", true),
-                getJobFieldString(job, "employer", true), getJobFieldString(job, "location", true),
-                getJobFieldString(job, "positionType", true), getJobFieldString(job, "coreCompetency", true));
-
-        Job job = createJob("Web Developer", "LaunchCode", "StL", "Back-end developer", "Java");
-        String jobString = getJobString(job);
-        assertEquals(jobString, job.toString());
+This test should check if the toString method can handle an empty field(s)
  */
-    }
-
-
-    @Test
+    @Test //****//
     public void testToStringHandlesEmptyField() {
-        Job jobTest = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
-                new PositionType(""), new CoreCompetency("Persistence"));
-        //"Product tester", new Employer("ACME"), new Location("Desert"),new PositionType(""), new CoreCompetency
-        // ("Persistence")
-        Assert.assertEquals(jobTest.toString(), "OOPS! This job does not seem to exist.");
+        //Job jobTest1 = new Job(); //name, employer, location, positionType, coreCompetency
+        Job jobTest2 = new Job("",new Employer(),
+                new Location(), new PositionType(),
+                new CoreCompetency());
+//BONUS: //Assert.assertEquals(jobTest2.toString(), "OOPS! This job does not seem to exist.");
+        String spec = "should check if the toString method can handle an empty field(s)";
+//BONUS: //assertEquals(jobTest2.toString(), '\n' + "OOPS! This job does not seem to exist." + '\n');
+        assertEquals(spec, "\nID: " + jobTest2.getId() + '\n' +
+        			                        "Name: Data not available" + '\n' +
+        			                        "Employer: Data not available" + '\n' +
+                                            "Location: Data not available" + '\n' +
+        			                         "Position Type: Data not available" + '\n' +
+        			                         "Core Competency: Data not available" + '\n', jobTest2.toString());
     }
 
+/*
+If a Job object ONLY contains data for the id field, the method should return,
+“OOPS! This job does not seem to exist.”
+ */
+    @Test
+    public void testToStringBonus() {
+        Job jobTest = new Job();
+        String spec = "this job does not seem to exist";
+        assertEquals(spec, "OOPS! This job does not seem to exist.", jobTest.toString());
+    }
 }

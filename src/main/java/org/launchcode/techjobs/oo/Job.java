@@ -147,29 +147,49 @@ BONUS: the test checks if a Job object ONLY contains data for the id field, the 
 //        if (int id == int i = 0) { //default values: int = 0, string = null //BONUS
 //            return "OOPS! This job does not seem to exist.";        //BONUS
 //        }
+        if (this.getName() == null && this.getEmployer() == null && this.getLocation() == null
+                && this.getPositionType() == null && this.getCoreCompetency() == null) {
+            return "OOPS! This job does not seem to exist.";
+        } else {
+            String response = "\nID: " + id + "\n";
 
-        String DNA = "Data not available";
-        if (name == null || name == "") {
-            name = DNA;
+            if (this.getName() == "") {  //|| this.getName() == ""
+            response += "Name: Data not available\n";
+            } else {
+                response += "Name: " + this.getName() + "\n";
+            }
+
+            if (employer.getValue() == null) {  //equals()  // || employer.getValue() == ""
+                response += "Employer: Data not available\n";
+            } else {
+                response += "Employer: " + employer.getValue() + "\n";
+            }
+
+            if (location.getValue() == null) {
+                response += "Location: Data not available\n";
+            } else {
+                response += "Location: " + location.getValue() + "\n";
+            }
+
+            if (positionType.getValue() == null) {
+                response += "Position Type: Data not available\n";
+            } else {
+                response += "Position Type: " + positionType.getValue() + "\n";
+            }
+
+            if (coreCompetency.getValue() == null) {
+                response += "Core Competency: Data not available\n";
+            } else {
+                response += "Core Competency: " + coreCompetency.getValue() + "\n";
+            }
+            return response;
         }
-        if (employer == null || employer.getValue() == "") {  //equals()
-            employer.setValue(DNA);
-        }
-        if (location == null || location.getValue() =="") {
-            location.setValue(DNA);
-        }
-        if (positionType == null || positionType.getValue() =="") {
-            positionType.setValue(DNA);
-        }
-        if(coreCompetency == null || coreCompetency.getValue() == "") {
-            coreCompetency.setValue(DNA);
-        }
-        return "\n" + "ID: " + id + "\n" +
-                "Name: " + name + "\n" +
-                "Employer: " + employer + "\n" +
-                "Location: " + location + "\n" +
-                "Position Type: " + positionType + "\n" +
-                "Core Competency: " + coreCompetency + "\n";
+//        return "\nID: " + id + "\n" +
+//                "Name: " + this.getName() + "\n" +
+//                "Employer: " + employer.getValue() + "\n" +
+//                "Location: " + location.getValue() + "\n" +
+//                "Position Type: " + positionType.getValue() + "\n" +
+//                "Core Competency: " + coreCompetency.getValue() + "\n";
     }
 
 
