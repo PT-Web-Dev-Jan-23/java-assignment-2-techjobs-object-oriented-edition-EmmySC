@@ -91,17 +91,10 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
-//    public static int getId() {
-//        return id;
-//    }
-
-    public int getId() {
+    public int getId() {  //public static int getId()
         return id;
     }
 
-//    public static boolean getId() {
-//        return id;
-//    }
 
     /*
     How toString method needs to behave:
@@ -123,12 +116,6 @@ public class Job {
 the test only checks if the returned string starts and ends with a blank line, make that happen
  */
 
-//    public String toString() {
-//        String Job = "\n";
-//        return String.valueOf('\n'+ Job +'\n');
-//
-//    }
-
 /*
 the test checks if the string contains a label for each field, followed by the data stored in that
 field, and that each field is on its own line
@@ -144,22 +131,20 @@ BONUS: the test checks if a Job object ONLY contains data for the id field, the 
  */
     @Override
     public String toString() {
-//        if (int id == int i = 0) { //default values: int = 0, string = null //BONUS
-//            return "OOPS! This job does not seem to exist.";        //BONUS
-//        }
+
         if (this.getName() == null && this.getEmployer() == null && this.getLocation() == null
                 && this.getPositionType() == null && this.getCoreCompetency() == null) {
-            return "OOPS! This job does not seem to exist.";
+            return "OOPS! This job does not seem to exist.";  //BONUS
         } else {
-            String response = "\nID: " + id + "\n";
+            String response = "\nID: " + id + "\n";  ////
 
-            if (this.getName() == "") {  //|| this.getName() == ""
+            if (this.getName() == "") {
             response += "Name: Data not available\n";
             } else {
                 response += "Name: " + this.getName() + "\n";
             }
 
-            if (employer.getValue() == null || employer.getValue() == "") {  //equals()  // || employer.getValue() == ""
+            if (employer.getValue() == null || employer.getValue() == "") {
                 response += "Employer: Data not available\n";
             } else {
                 response += "Employer: " + employer.getValue() + "\n";
@@ -191,24 +176,6 @@ BONUS: the test checks if a Job object ONLY contains data for the id field, the 
 //                "Position Type: " + positionType.getValue() + "\n" +
 //                "Core Competency: " + coreCompetency.getValue() + "\n";
     }
-
-
-//BONUS:
-//    public String toString() {
-//        if (!(this instanceof Job)) {
-//            return "OOPS! This job does not seem to exist.";
-//        }
-//
-//        return '\n' + "ID: "+ id + "\n" +
-//                "Name: " + name + "\n" +
-//                "Employer: " + employer.getValue() +"\n" +
-//                "Location: " + location.getValue() +"\n" +
-//                "Position Type: " + positionType.getValue() +"\n" +
-//                "Core Competency: " + coreCompetency.getValue()+'\n';
-//
-//    }
-
-
 
 
 }
